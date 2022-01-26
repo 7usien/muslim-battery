@@ -1,0 +1,14 @@
+{
+	"name": "islam-battery",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"sass": "node-sass -w -x -r sass/main.scss style.css --output"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"node-sass": "^7.0.1"
+	}
+}
