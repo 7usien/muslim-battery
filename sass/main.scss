@@ -1,9 +1,11 @@
 @charset 'UTF-8';
-@import 'base/reset';
 @import 'utilties/vars';
+@import 'base/reset';
+
 @import 'base/typography.scss';
 @import 'layout/header';
 @import 'layout/nav';
 @import 'layout/footer';
+@import 'components/card';
 
 @import 'pages/home';

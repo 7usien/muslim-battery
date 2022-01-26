@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Mirza:wght@400;500&family=Nanum+Gothic+Coding:wght@400;700&family=Readex+Pro:wght@400;500&display=swap');
 
+html {
+	font-size: 150%; //24px
+}
 body {
 	font-family: Mirza;
+}
+
+.header {
+	&__nav ul {
+		font-size: 1.25rem; // 24+12=36px
+	}
 }
