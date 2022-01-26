@@ -2,6 +2,9 @@
 	inline-size: 100%;
 
 	margin-inline: 0 auto;
+	height: auto;
+	grid-column: 1/-1;
+	grid-row: 1/2;
 
 	&__logo {
 		display: block;

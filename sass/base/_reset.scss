@@ -10,7 +10,8 @@
 
 html {
 	font-size: 100%;
-	min-height: 100%;
+	min-block-size: 100%;
+	box-sizing: border-box;
 }
 html[lang='ar'] {
 	// writing mode from right to Light
@@ -21,7 +22,6 @@ html[lang='ar'] {
 body {
 	padding-block: 0 0;
 	margin-block: 0 0;
-	box-sizing: border-box;
 	background: linear-gradient(45deg, rgba($primary, 0.95), rgba($second, 0.95)),
 		url('../../img/pattern.png') repeat;
 

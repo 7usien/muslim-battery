@@ -1,17 +1,55 @@
 .card {
+	block-size: 70vh;
+	position: relative;
+	text-align: center;
+	background-color: $white;
+
+	box-shadow: 0 0.3rem 1rem rgba($dark, 0.4);
+	color: $primary;
+	border-radius: 2rem 1rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr auto;
+
+	&::before {
+		content: '{';
+		position: absolute;
+		inset-inline-start: 0;
+		inset-block-start: 0;
+	}
+	&::after {
+		content: '}';
+		position: absolute;
+		inset-inline-end: 0;
+		inset-block-end: 0;
+	}
+
 	&__title {
 		text-align: center;
 
 		padding-block: 4rem;
 		padding-inline: 3rem;
 		display: block;
-		font-size: 2.5rem;
-		color: $white;
+		font-size: 2.8rem;
+
 		font-weight: 400;
-		filter: drop-shadow(0 3px 3px rgba($dark, 0.5));
-	}
-	&__count {
+		filter: drop-shadow(0 2px 2px rgba($dark, 0.3));
+		align-self: center;
 	}
 	&__nav {
+		inline-size: auto;
+		display: flex;
+		justify-content: space-evenly;
+		font-size: 1.3rem;
+		padding-block-end: 3rem;
+	}
+	&__count {
+		color: $white;
+		background-color: $yellow;
+		display: inline-block;
+		width: max-content;
+
+		padding: 5px 15px 15px;
+		border-radius: 50px;
 	}
 }
