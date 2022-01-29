@@ -3,6 +3,7 @@
 
 	margin-inline: 0 auto;
 	height: auto;
+
 	grid-column: 1/-1;
 	grid-row: 1/2;
 
@@ -25,8 +26,8 @@
 				font-size: 1rem;
 				letter-spacing: 0;
 				position: absolute;
-				inset-block-end: 10px;
-				inset-inline-start: 250px;
+				inset-block-end: 6px;
+				inset-inline-start: 300px;
 				color: $yellow;
 			}
 		}
