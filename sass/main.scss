@@ -1,10 +1,12 @@
 @charset 'UTF-8';
 @import 'utilties/vars';
+@import 'utilties/mixins';
 @import 'base/reset';
 
 @import 'base/typography.scss';
 @import 'layout/header';
 @import 'layout/nav';
+@import 'layout/progress';
 @import 'layout/footer';
 @import 'components/card';
 @import 'utilties/utilities';

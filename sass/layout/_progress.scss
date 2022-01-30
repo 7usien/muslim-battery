@@ -1,0 +1,49 @@
+.progress {
+	position: absolute;
+
+	display: block;
+	inset-block-end: -0.3rem;
+	inset-inline: 0 0;
+	margin-block: 0;
+	margin-inline: auto;
+	font-size: 1.2rem;
+
+	&__meter {
+		inline-size: 100%;
+		block-size: 2rem;
+		background-color: $dark;
+		position: relative;
+		border-end-start-radius: 1rem;
+		border-end-end-radius: 1rem;
+	}
+
+	&__parcent {
+		color: #fff;
+		position: absolute;
+		display: block;
+		inset-block-end: 0rem;
+		inset-inline-start: 0;
+		margin-block: 0;
+
+		height: 100%;
+		margin-inline: auto;
+		z-index: 55;
+		inline-size: 75%;
+		background-color: $yellow;
+		border-start-end-radius: 1rem;
+		border-end-end-radius: 1rem;
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+		@include fontSize('med');
+	}
+	&__info {
+		color: $dark;
+		position: absolute;
+		display: block;
+		inline-size: max-content;
+		inset-block-end: 3.3rem;
+		inset-inline: 0 0;
+		margin-block: 0;
+		margin-inline: auto;
+		z-index: 55;
+	}
+}

@@ -1,7 +1,4 @@
 .card {
-	block-size: 70vh;
-	position: relative;
-	text-align: center;
 	background-color: $white;
 
 	box-shadow: 0 0.3rem 1rem rgba($dark, 0.4);
@@ -10,33 +7,56 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr auto;
+	min-height: 70vh;
 
 	&__title {
 		text-align: center;
 
-		padding-block: 4rem;
-		padding-inline: 3rem;
+		padding-block: 7vh;
+		padding-inline: 5vw;
 		display: block;
-		font-size: 2.8rem;
+		font-size: calc(5vh + 0.5rem);
 
 		font-weight: 400;
 		filter: drop-shadow(0 2px 2px rgba($dark, 0.3));
 		align-self: center;
 	}
 	&__nav {
+		border-block-start: 1px solid rgba($dark, 0.1);
 		inline-size: auto;
 		display: flex;
 		justify-content: space-evenly;
 		font-size: 1.3rem;
-		padding-block-end: 3rem;
+		padding-block-start: 1rem;
+
+		padding-block-end: 5rem;
+
+		cursor: pointer;
+		&--right {
+			transition: all 0.3s;
+			&:hover {
+				transform: scale(1.1);
+				color: $second;
+			}
+		}
+
+		&--left {
+			transition: all 0.3s;
+
+			&:hover {
+				transform: scale(1.1);
+				color: $second;
+			}
+		}
 	}
 	&__count {
 		color: $white;
 		background-color: $yellow;
 		display: inline-block;
 		width: max-content;
-
-		padding: 5px 15px 15px;
+		padding: 5px 25px 15px;
 		border-radius: 50px;
+		filter: drop-shadow(0 0.2rem 0.3rem rgba($dark, 0.2));
+		cursor: default;
 	}
 }
