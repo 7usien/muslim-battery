@@ -1,11 +1,11 @@
 @mixin fontSize($size) {
-	@if $size= 'sm' {
+	@if $size== 'sm' {
 		font-size: 1rem;
-	} @else if ($size= 'med') {
+	} @else if ($size== 'med') {
 		font-size: 1.5rem;
-	} @else if ($size= 'lg') {
+	} @else if ($size== 'lg') {
 		font-size: 2rem;
-	} @else if ($size= 'heading') {
+	} @else if ($size== 'heading') {
 		font-size: 3rem;
 	}
 }

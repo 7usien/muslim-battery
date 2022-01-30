@@ -1,7 +1,8 @@
 const content = document.querySelector('.content');
 const doaaCount = document.querySelector('.card__count');
 const cards = document.querySelectorAll('.card');
-
+const progressWidth = document.querySelector('.progress__parcent');
+const progressInfo = document.querySelector('.progress__info')
 
 class Doaa {
   constructor(url) {
@@ -61,6 +62,7 @@ doaa.fetchData().then((doaas) => {
   });
   let countUp = 1;
   let countDown = cards.length;
+  progressWidth.style.inlineSize = (100 / countDown);
 
 
   const cardNavRight = document.querySelectorAll('.card__nav--right');
@@ -80,11 +82,16 @@ doaa.fetchData().then((doaas) => {
           'hidden'
         );
         countUp++;
+        progressInfo.innerText = `تم قراءة ${countUp} من أصل ${countDown}`;
+
+
       }
 
       if (countUp === countDown) {
         alert('تم أنهاء قراءة الأذكار بنجاح ..اللهم تقبل منكم')
       }
+
+
     });
   });
 
@@ -103,6 +110,7 @@ doaa.fetchData().then((doaas) => {
       }
     });
   });
+
 
 
 });

@@ -107,7 +107,7 @@ body {
     border-start-end-radius: 1rem;
     border-end-end-radius: 1rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
-    font-size: 1rem; }
+    font-size: 1.5rem; }
   .progress__info {
     color: #242a1c;
     position: absolute;
@@ -194,7 +194,7 @@ footer {
 
 .container {
   inline-size: 100%;
-  max-inline-size: 85vw;
+  max-inline-size: 1300px;
   margin-block: 0;
   margin-inline: auto;
   display: grid;
