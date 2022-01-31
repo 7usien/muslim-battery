@@ -1,8 +1,7 @@
 const content = document.querySelector('.content');
 const doaaCount = document.querySelector('.card__count');
 const cards = document.querySelectorAll('.card');
-const progressWidth = document.querySelector('.progress__parcent');
-const progressInfo = document.querySelector('.progress__info')
+let increment = 1;
 
 class Doaa {
   constructor(url) {
@@ -19,6 +18,7 @@ class Doaa {
 }
 
 const doaa = new Doaa('../json/azkar.json');
+
 doaa.fetchData().then((doaas) => {
   const filteredDoaa = Array.from(doaas).filter((doaa) => {
     if (doaa['category'] === 'أذكار الصباح') {
@@ -51,7 +51,6 @@ doaa.fetchData().then((doaas) => {
       `;
 
     content.innerHTML += card;
-
   });
 
   const cards = document.querySelectorAll('.card');
@@ -62,56 +61,62 @@ doaa.fetchData().then((doaas) => {
   });
   let countUp = 1;
   let countDown = cards.length;
-  progressWidth.style.inlineSize = (100 / countDown);
-
 
   const cardNavRight = document.querySelectorAll('.card__nav--right');
   const cardNavleft = document.querySelectorAll('.card__nav--left');
+  document.querySelector('progress').setAttribute('max', 31);
+
 
 
 
 
   cardNavRight.forEach((item) => {
+
+
     item.addEventListener('click', (e) => {
-
-
       if (countUp < countDown) {
-
         e.target.parentElement.parentElement.classList.add('hidden');
         e.target.parentElement.parentElement.nextElementSibling.classList.remove(
           'hidden'
         );
         countUp++;
-        progressInfo.innerText = `تم قراءة ${countUp} من أصل ${countDown}`;
+        console.log(countUp);
 
-
+        document.querySelector(
+          '.progress__info'
+        ).innerHTML = `تم قراءة ${countUp} من أصل ${countDown}`;
       }
+
+      document.querySelector('progress').setAttribute('max', countDown);
+
+      increment += 1;
+
+      document.querySelector('progress').setAttribute('value', increment);
+
+      console.log(document.querySelector('progress'));
 
       if (countUp === countDown) {
-        alert('تم أنهاء قراءة الأذكار بنجاح ..اللهم تقبل منكم')
+        alert('تم أنهاء قراءة الأذكار بنجاح ..اللهم تقبل منكم');
       }
-
-
     });
+
   });
-
-
 
   cardNavleft.forEach((item) => {
     item.addEventListener('click', (e) => {
-
       if (countUp > 1) {
-
         e.target.parentElement.parentElement.classList.add('hidden');
         e.target.parentElement.parentElement.previousElementSibling.classList.remove(
           'hidden'
         );
         countUp--;
+
+        document.querySelector(
+          '.progress__info'
+        ).innerHTML = `تم قراءة ${countUp} من أصل ${countDown}`;
       }
     });
   });
-
-
-
 });
+
 

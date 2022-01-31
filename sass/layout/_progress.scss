@@ -15,32 +15,28 @@
 		position: relative;
 		border-end-start-radius: 1rem;
 		border-end-end-radius: 1rem;
+
+		progress {
+			inline-size: 100%;
+			block-size: inherit;
+
+			appearance: none;
+			animation: animate-progress 5s linear infinite;
+		}
+
+		progress::-webkit-progress-bar {
+			background-color: #eee;
+			border-radius: 2px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+		}
 	}
 
-	&__parcent {
-		color: #fff;
-		position: absolute;
-		display: block;
-		inset-block-end: 0rem;
-		inset-inline-start: 0;
-		margin-block: 0;
-
-		height: 100%;
-		margin-inline: auto;
-		z-index: 55;
-		inline-size: 75%;
-		background-color: $yellow;
-		border-start-end-radius: 1rem;
-		border-end-end-radius: 1rem;
-		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
-		@include fontSize('med');
-	}
 	&__info {
 		color: $dark;
 		position: absolute;
 		display: block;
 		inline-size: max-content;
-		inset-block-end: 3.3rem;
+		inset-block-end: 2.8rem;
 		inset-inline: 0 0;
 		margin-block: 0;
 		margin-inline: auto;

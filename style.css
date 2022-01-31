@@ -31,6 +31,10 @@ body {
 .header__nav ul {
   font-size: 1.25rem; }
 
+@keyframes animate-progress {
+  100% {
+    background-position: -100px 0px; } }
+
 .header {
   inline-size: 100%;
   margin-inline: 0 auto;
@@ -92,28 +96,21 @@ body {
     position: relative;
     border-end-start-radius: 1rem;
     border-end-end-radius: 1rem; }
-  .progress__parcent {
-    color: #fff;
-    position: absolute;
-    display: block;
-    inset-block-end: 0rem;
-    inset-inline-start: 0;
-    margin-block: 0;
-    height: 100%;
-    margin-inline: auto;
-    z-index: 55;
-    inline-size: 75%;
-    background-color: #d6b212;
-    border-start-end-radius: 1rem;
-    border-end-end-radius: 1rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
-    font-size: 1.5rem; }
+    .progress__meter progress {
+      inline-size: 100%;
+      block-size: inherit;
+      appearance: none;
+      animation: animate-progress 5s linear infinite; }
+    .progress__meter progress::-webkit-progress-bar {
+      background-color: #eee;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
   .progress__info {
     color: #242a1c;
     position: absolute;
     display: block;
     inline-size: max-content;
-    inset-block-end: 3.3rem;
+    inset-block-end: 2.8rem;
     inset-inline: 0 0;
     margin-block: 0;
     margin-inline: auto;
@@ -132,13 +129,13 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
-  min-height: 70vh; }
+  height: 75vh; }
   .card__title {
     text-align: center;
     padding-block: 7vh;
     padding-inline: 5vw;
     display: block;
-    font-size: calc(5vh + 0.5rem);
+    font-size: calc(4vh + 0.5rem);
     font-weight: 400;
     filter: drop-shadow(0 2px 2px rgba(36, 42, 28, 0.3));
     align-self: center; }
