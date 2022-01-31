@@ -17,7 +17,7 @@ class Doaa {
 
 }
 
-const doaa = new Doaa('../json/azkar.json');
+const doaa = new Doaa('https://raw.githubusercontent.com/7usien/muslim-battery/ver1/json/azkar.json');
 
 doaa.fetchData().then((doaas) => {
   const filteredDoaa = Array.from(doaas).filter((doaa) => {
