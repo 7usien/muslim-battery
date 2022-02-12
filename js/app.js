@@ -12,8 +12,17 @@ class Doaa {
 		const data = await response.json();
 		return data;
 	};
+
+	getCat = (data, cat) => {
+		const filteredDoaa = Array.from(data).filter((doaa) => {
+			if (doaa['category'] === cat) {
+				return doaa;
+			}
+		});
+	};
 }
 
+// new class object
 const doaa = new Doaa(
 	'https://raw.githubusercontent.com/7usien/muslim-battery/ver1/json/azkar.json'
 );
