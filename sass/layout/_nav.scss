@@ -43,13 +43,15 @@
 			.cats {
 				position: absolute;
 				display: grid;
-				grid-template-columns: repeat(6, 1fr);
+				grid-template-columns: repeat(5, 1fr);
 				inset-block-start: 60px;
 				background-color: #fff;
 				z-index: 355553;
 				font-size: 0.8rem;
 				inline-size: 90vw;
 				transform: translateX(45vw);
+				max-block-size: 500px;
+				overflow-y: auto;
 				text-align: start;
 				row-gap: 0.5rem;
 				align-items: flex-start;
@@ -67,6 +69,10 @@
 					&:hover {
 						border-block-end: 1px solid $dark;
 					}
+				}
+				li a {
+					color: $dark;
+					padding: 0.2rem;
 				}
 			}
 		}

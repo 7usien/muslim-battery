@@ -1,6 +1,6 @@
 // Vars Declartions
 const content = document.querySelector('.content');
-let cardsMorning;
+let cardsback;
 let navRightWrap = [],
 	navLeftWrap = [];
 let progress = document.querySelector('.progress__meter progress');
@@ -21,7 +21,7 @@ const url =
 
 // CLASS AZKAR
 class Azker {
-	constructor(url, type = 'أذكار الصباح', filterData = 'morning') {
+	constructor(url, type = 'أذكار الصباح', filterData = 'doaa') {
 		this.url = url;
 		this.type = type;
 		this.filterData = filterData;
@@ -35,35 +35,57 @@ class Azker {
 	};
 
 	viewType = (data) => {
+		// kind of reset
+
+		content.querySelectorAll('.card').forEach((card) => {
+			card.remove();
+		});
+
+		progressCounter = 1;
+		progress.setAttribute('value', 0);
+
 		const filterData = data.filter((item) => {
 			azkarSets.add(item.category);
 
 			if (item.category === this.type) {
-				content.appendChild(this.buildUI(item));
+				// console.log(item);
 
-				cardsMorning = document.querySelectorAll(
+				content.append(this.buildUI(item));
+
+				cardsback = document.querySelectorAll(
 					`[data-type="${this.filterData}"]`
 				);
 			}
 		});
 
+		// SUB menu for other Doaa
 		Array.from(azkarSets).filter((item) => {
 			if (item != 'أذكار الصباح' && item != 'أذكار المساء') {
 				let li = document.createElement('li');
-				li.setAttribute('data-href', item);
-				menuWrap.appendChild(li);
-				li.textContent = item;
+
+				let link = document.createElement('a');
+
+				link.setAttribute('data-href', item);
+
+				li.append(link);
+
+				menuWrap.append(li);
+				link.textContent = item;
 			}
 		});
-		this.controlUI(cardsMorning);
+		this.controlUI(cardsback);
 	};
+
+	// PUT IN DOM
 
 	buildUI = (item) => {
 		let card = document.createElement('div');
 
 		card.classList.add('card');
 		card.setAttribute('data-type', `${this.filterData}`);
-		card.innerHTML = `
+
+		if (item.count) {
+			card.innerHTML = `
     
           <h2 class="card__title">
 
@@ -76,7 +98,10 @@ class Azker {
           <div class="card__nav">
             <span class="card__nav--right">→ الدعاء التالي </span>
 
+
+
             <span class="card__count">عدد مرات التكرار :    ${item.count}</span>
+						
             <span class="card__nav--left"> الدعاء السابق ←</span>
 
 
@@ -85,10 +110,37 @@ class Azker {
       
       
       `;
+		} else {
+			card.innerHTML = `
+    
+          <h2 class="card__title">
+
+           ${item.zekr}
+
+
+          </h2>
+
+
+          <div class="card__nav">
+            <span class="card__nav--right">→ الدعاء التالي </span>
+
+
+
+						
+            <span class="card__nav--left"> الدعاء السابق ←</span>
+
+
+          </div>
+      
+      
+      
+      `;
+		}
 
 		return card;
 	};
 
+	// Show & Hide and Nav
 	controlUI = (cards) => {
 		cards.forEach((card) => {
 			card.classList.add('hidden');
@@ -138,17 +190,45 @@ class Azker {
 	};
 }
 
-async function build(type) {
-	const zerkApp = await new Azker(url, type, 'morning');
-	zerkApp.fetchData().then((data) => {
-		zerkApp.viewType(data);
-	});
+function build(type) {
+	let zerkApp = new Azker(url, type);
+	zerkApp
+		.fetchData()
+		.then((data) => {
+			zerkApp.viewType(data);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 }
 
-nav.addEventListener('click', (e) => {
-	linkDataset = e.target.dataset.href;
+// Main nav
+nav.querySelectorAll('a').forEach((navItem) => {
+	if (navItem.getAttribute('data-href')) {
+		navItem.addEventListener('click', (e) => {
+			linkDataset = e.target.dataset.href;
+			navRightWrap = [];
+			navLeftWrap = [];
+			console.log(navLeftWrap, navRightWrap);
 
-	build(linkDataset);
+			build(linkDataset);
+		});
+	}
 });
 
-linkDataset === null ? build('أذكار الصباح') : build(linkDataset);
+// get other doaa with setTimeout
+setTimeout(() => {
+	menuWrap.querySelectorAll('a').forEach((navItem) => {
+		if (navItem.getAttribute('data-href')) {
+			navItem.addEventListener('click', (e) => {
+				linkDataset = e.target.dataset.href;
+				navRightWrap = [];
+				navLeftWrap = [];
+				console.log(navLeftWrap, navRightWrap);
+				build(linkDataset);
+			});
+		}
+	});
+}, 1000);
+
+linkDataset === null ? build('أذكار الصباح') : false;
