@@ -1,18 +1,27 @@
+// Vars Declartions
 const content = document.querySelector('.content');
 let cardsMorning;
 let navRightWrap = [],
 	navLeftWrap = [];
-
 let progress = document.querySelector('.progress__meter progress');
-
 let progressInfo = document.querySelector('.progress__info');
 let progressCounter = 1;
+let nav = document.querySelector('.header__nav ul');
+let linkDataset = null;
+let azkarSets = new Set();
 
+const subMenu = document.querySelector('#submenu');
+const menuWrap = document.createElement('ul');
+menuWrap.classList.add('cats');
+subMenu.parentElement.appendChild(menuWrap);
+
+// JSON URL
 const url =
 	'https://raw.githubusercontent.com/7usien/muslim-battery/ver1/json/azkar.json';
 
+// CLASS AZKAR
 class Azker {
-	constructor(url, type, filterData) {
+	constructor(url, type = 'أذكار الصباح', filterData = 'morning') {
 		this.url = url;
 		this.type = type;
 		this.filterData = filterData;
@@ -20,13 +29,15 @@ class Azker {
 
 	fetchData = async () => {
 		const response = await fetch(this.url);
-		const data = response.json();
+		const data = await response.json();
 
 		return data;
 	};
 
-	viewType = async (data) => {
-		const filterData = await data.filter((item) => {
+	viewType = (data) => {
+		const filterData = data.filter((item) => {
+			azkarSets.add(item.category);
+
 			if (item.category === this.type) {
 				content.appendChild(this.buildUI(item));
 
@@ -35,7 +46,15 @@ class Azker {
 				);
 			}
 		});
-		console.log(cardsMorning);
+
+		Array.from(azkarSets).filter((item) => {
+			if (item != 'أذكار الصباح' && item != 'أذكار المساء') {
+				let li = document.createElement('li');
+				li.setAttribute('data-href', item);
+				menuWrap.appendChild(li);
+				li.textContent = item;
+			}
+		});
 		this.controlUI(cardsMorning);
 	};
 
@@ -119,7 +138,17 @@ class Azker {
 	};
 }
 
-const zerkApp = new Azker(url, 'أذكار الصباح', 'morning');
-zerkApp.fetchData().then((data) => {
-	zerkApp.viewType(data);
+async function build(type) {
+	const zerkApp = await new Azker(url, type, 'morning');
+	zerkApp.fetchData().then((data) => {
+		zerkApp.viewType(data);
+	});
+}
+
+nav.addEventListener('click', (e) => {
+	linkDataset = e.target.dataset.href;
+
+	build(linkDataset);
 });
+
+linkDataset === null ? build('أذكار الصباح') : build(linkDataset);

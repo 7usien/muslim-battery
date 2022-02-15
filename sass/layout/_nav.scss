@@ -12,16 +12,61 @@
 			a {
 				text-decoration: none;
 				display: block;
+				padding: 0.5rem;
 				color: $white;
+				cursor: pointer;
 
 				&:hover {
 					color: $yellow;
 				}
 			}
 
+			a.active {
+				background-image: linear-gradient(
+					to bottom right,
+					rgba($second, 0.9),
+					rgba($yellow, 0.8)
+				);
+				background-size: 200%;
+				box-shadow: 0 0.5rem 1rem rgba($dark, 0.5);
+				border-end-start-radius: 1rem;
+			}
+
 			li {
 				list-style: none;
-				&:not(:last-child) {
+				position: relative;
+				&:hover .cats {
+					display: grid;
+				}
+			}
+
+			.cats {
+				position: absolute;
+				display: grid;
+				grid-template-columns: repeat(6, 1fr);
+				inset-block-start: 60px;
+				background-color: #fff;
+				z-index: 355553;
+				font-size: 0.8rem;
+				inline-size: 90vw;
+				transform: translateX(45vw);
+				text-align: start;
+				row-gap: 0.5rem;
+				align-items: flex-start;
+				padding-inline: 1rem;
+				padding-block: 1rem;
+				box-shadow: 0 0.5rem 0.9rem rgba($dark, 0.3);
+				display: none;
+
+				li {
+					list-style: none;
+					border-bottom: 1px solid #ccc;
+					padding-bottom: 0.5rem;
+					cursor: pointer;
+
+					&:hover {
+						border-block-end: 1px solid $dark;
+					}
 				}
 			}
 		}
