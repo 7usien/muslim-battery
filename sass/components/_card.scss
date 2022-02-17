@@ -3,11 +3,11 @@
 
 	box-shadow: 0 0.3rem 1rem rgba($dark, 0.4);
 	color: $primary;
+	min-height: 60vh;
 	border-radius: 2rem 1rem;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr auto;
-	min-height: 75vh;
 
 	&__title {
 		text-align: center;

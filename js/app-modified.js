@@ -1,3 +1,4 @@
+'use strict';
 // Vars Declartions
 const content = document.querySelector('.content');
 let cardsback;

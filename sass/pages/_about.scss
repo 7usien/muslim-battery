@@ -1,0 +1,17 @@
+.about {
+	background-color: $white;
+
+	box-shadow: 0 0.3rem 1rem rgba($dark, 0.4);
+	color: $primary;
+	min-height: 60vh;
+	padding-block: 1.5rem;
+	border-radius: 2rem 1rem;
+
+	&__title {
+		@include fontSize(lg);
+		color: $second;
+	}
+	p {
+		@include fontSize(md);
+	}
+}

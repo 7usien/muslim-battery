@@ -167,11 +167,11 @@ footer {
   background-color: #fff;
   box-shadow: 0 0.3rem 1rem rgba(36, 42, 28, 0.4);
   color: #0b2f22f2;
+  min-height: 60vh;
   border-radius: 2rem 1rem;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  min-height: 75vh; }
+  grid-template-rows: 1fr auto; }
   .card__title {
     text-align: center;
     padding-block: 7vh;
@@ -248,3 +248,14 @@ main {
 .content {
   position: relative;
   text-align: center; }
+
+.about {
+  background-color: #fff;
+  box-shadow: 0 0.3rem 1rem rgba(36, 42, 28, 0.4);
+  color: #0b2f22f2;
+  min-height: 60vh;
+  padding-block: 1.5rem;
+  border-radius: 2rem 1rem; }
+  .about__title {
+    font-size: 2rem;
+    color: #435b24; }
