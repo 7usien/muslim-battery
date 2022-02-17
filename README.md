@@ -13,5 +13,7 @@
 
 #### Future updates
 
-[X] add support for mobile. [X] add support for nav with keyboard. [X] add
-support for Accessiblity.
+- [x] add support for mobile **under progress**.
+- [ ] add support for nav with keyboard.
+- [ ] add support for Accessiblity.
+- [ ] add support for Night Mode.
